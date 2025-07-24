@@ -9,6 +9,6 @@
   },
   "permissions": ["clipboardWrite"],
   "icons": {
-    "48": "icon.png"
+    "48": "padlock.png"
   }
 }
