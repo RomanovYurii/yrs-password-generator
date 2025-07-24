@@ -34,8 +34,24 @@ document.getElementById("generate").addEventListener("click", () => {
   if (useSpecial) chars += special;
 
   let password = "";
-  for (let i = 0; i < length; i++) {
-    password += chars.charAt(Math.floor(Math.random() * chars.length));
+
+  const generatePassword = () => {
+    for (let i = 0; i < length; i++) {
+      password += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    // Проверка на наличие хотя бы одной буквы, цифры и специального символа
+    if (useSpecial) {
+      const hasLower = /[a-z]/.test(password);
+      const hasUpper = /[A-Z]/.test(password);
+      const hasDigit = /\d/.test(password);
+      const hasSpecial = /[!@#$%^&*()\-_=+[\]{}<>?\/]/.test(password);
+
+      if (!hasLower || !hasUpper || !hasDigit || !hasSpecial) {
+        password = ""; // Сброс пароля, если не выполнены условия
+        generatePassword(); // Рекурсивный вызов для генерации нового пароля
+      }
+    }
   }
 
   passwordField.value = password;
