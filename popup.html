@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Генератор Паролей</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Генератор Пароля</h1>
+<label>
+    Кол-во символов:
+    <input type="number" id="length" min="4" max="128" value="12">
+</label>
+<label>
+    <input type="checkbox" id="specialChars" checked>
+    Включать спец. символы (!@#...)
+</label>
+<button id="generate">Сгенерировать</button>
+<textarea id="password" readonly></textarea>
+<div id="message"></div>
+<script src="popup.js"></script>
+</body>
+</html>
