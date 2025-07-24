@@ -1,8 +1,29 @@
+const lengthInput = document.getElementById("length");
+const specialCharsInput = document.getElementById("specialChars");
+const passwordField = document.getElementById("password");
+const message = document.getElementById("message");
+
+// Загрузка сохранённых настроек при открытии расширения
+document.addEventListener("DOMContentLoaded", () => {
+  chrome.storage.local.get(["length", "specialChars"], (data) => {
+    if (data.length) {
+      lengthInput.value = data.length;
+    }
+    if (typeof data.specialChars === "boolean") {
+      specialCharsInput.checked = data.specialChars;
+    }
+  });
+});
+
 document.getElementById("generate").addEventListener("click", () => {
-  const length = parseInt(document.getElementById("length").value);
-  const useSpecial = document.getElementById("specialChars").checked;
-  const passwordField = document.getElementById("password");
-  const message = document.getElementById("message");
+  const length = parseInt(lengthInput.value);
+  const useSpecial = specialCharsInput.checked;
+
+  // Сохраняем выбор пользователя
+  chrome.storage.local.set({
+    length: length,
+    specialChars: useSpecial
+  });
 
   const lower = "abcdefghijklmnopqrstuvwxyz";
   const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

@@ -7,7 +7,7 @@
     "default_popup": "popup.html",
     "default_title": "Генератор Паролей"
   },
-  "permissions": ["clipboardWrite"],
+  "permissions": ["clipboardWrite", "storage"],
   "icons": {
     "48": "padlock.png"
   }
