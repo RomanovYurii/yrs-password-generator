@@ -54,6 +54,8 @@ document.getElementById("generate").addEventListener("click", () => {
     }
   }
 
+  generatePassword()
+
   passwordField.value = password;
 
   navigator.clipboard.writeText(password).then(() => {
